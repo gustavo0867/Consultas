@@ -1,0 +1,63 @@
+<html 
+      lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <f:facet name="first">
+        <meta charset="UTF-8" />
+        <title>Pesquisa de Consultas</title>
+    </f:facet>
+    <h:outputStylesheet library="css" name="style.css"/>
+    <h:outputStylesheet library="css" name="default.css"/>
+    <h:outputStylesheet library="css" name="overrides.css"/>
+</h:head>
+    
+    <h:body>
+        <h3>Pesquise as Consultas </h3>
+    <h:form>
+        <h:panelGrid columns="3" style="height:50px; width:300px;">
+            
+            <h:outputText value="Selecione o tipo de consulta *" />
+            <h:selectOneMenu id="tipoConsultaSelectOneMenu" required="true" value="#{clinicaMedicaBean.tipoConsultaSelecionado}"
+                             requiredMessage="Tipo de consulta não selecionado" style="width: 100px">
+                <f:selectItem itemValue="exame" itemLabel="Exame" />
+                <f:selectItem itemValue="consulta" itemLabel="Consulta" />
+                <f:selectItem itemValue="cirurgia" itemLabel="Cirurgia" />
+            </h:selectOneMenu>
+            <h:message for="tipoConsultaSelectOneMenu" styleClass="mensagem_erro" />
+
+            
+            
+             <h:outputText value="Selecione um ano *" />
+            <h:selectOneMenu id="anoSelectOneMenu" required="true" value="#{clinicaMedicaBean.anoSelecionado}"
+                                     requiredMessage="Ano não selecionado" style="width: 100px">
+                <f:selectItems value="#{clinicaMedicaBean.getAnoItens()}" />
+            </h:selectOneMenu>
+            <h:message for="anoSelectOneMenu" styleClass="mensagem_erro" />   
+            
+        </h:panelGrid>
+
+        <h:commandButton value="Pesquisar" action="#{clinicaMedicaBean.pesquisarConsulta()}" />
+    </h:form>
+        
+    <h:panelGrid rendered="#{clinicaMedicaBean.pesquisar}">
+      
+        <h:outputFormat value="Tipo de Consulta {0}" styleClass="mensagem">
+            <f:param value="#{clinicaMedicaBean.tipoConsultaSelecionado}" />
+        </h:outputFormat>
+  
+
+        <ul>
+            <ui:repeat value="#{clinicaMedicaBean.getInfoConsultasTipos()}" var="info_consulta">
+                <li>#{info_consulta}</li>
+            </ui:repeat>
+        </ul>
+    </h:panelGrid>
+
+    <p>
+        <h:outputLink value="index.xhtml">Visualizar e Cadastrar Consultas</h:outputLink>
+    </p>
+    </h:body>
+</html>

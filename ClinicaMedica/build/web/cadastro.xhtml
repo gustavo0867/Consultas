@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <f:facet name="first">
+            <meta charset="UTF-8" />
+            <title>Cadastrar Consulta</title>
+        </f:facet>
+        <h:outputStylesheet library="css" name="style.css"/>
+        <h:outputStylesheet library="css" name="default.css"/>
+        <h:outputStylesheet library="css" name="override.css"/>
+    </h:head>
+    <h:body>
+        <h3>Cadastro de Consultas</h3>
+        <h:form>
+            
+            <h:commandButton value="Cadastrar" action="#{clinicaMedicaBean.reset()}"/>
+            <h:panelGrid   rendered="#{clinicaMedicaBean.cadastrar}">
+                <h:outputLabel value="Nome do Paciente *" />
+                <h:inputText id="nomePacienteInputText" required="true" value="#{clinicaMedicaBean.consulta.nomePaciente}"
+                             requiredMessage="Nome do Paciente não preenchido" />
+                <h:message for="nomePacienteInputText" styleClass="mensagem_erro" />
+
+                <h:outputLabel value="Nome do Médico *"/>
+                <h:inputText id="nomeMedicoInputText" required="true" value="#{clinicaMedicaBean.consulta.nomeMedico}"
+                             requiredMessage="Nome do Médico não preenchido" />
+                <h:message for="nomeMedicoInputText" styleClass="mensagem_erro" />
+
+                <h:outputLabel value="Ano *" />
+                <h:inputText id="anoInputText" required="true" value="#{clinicaMedicaBean.consulta.ano}"
+                             requiredMessage="Ano não preenchido" validatorMessage="Formato incorreto do ano">
+                    <f:validateRegex pattern="\d{4}" />
+                </h:inputText>
+                <h:message for="anoInputText" styleClass="mensagem_erro" />
+
+                <h:outputLabel value="Tipo de Consulta *" />
+                <h:selectOneMenu id="tipoConsultaSelectOneMenu" required="true" value="#{clinicaMedicaBean.consulta.tipoConsulta}"
+                                 requiredMessage="Tipo de Consulta não selecionado">
+                    <f:selectItem itemValue="exame" itemLabel="Exame" />
+                    <f:selectItem itemValue="consulta" itemLabel="Consulta" />
+                    <f:selectItem itemValue="cirurgia" itemLabel="Cirurgia" />
+                </h:selectOneMenu>
+                <h:message for="tipoConsultaSelectOneMenu" styleClass="mensagem_erro" />
+                
+                <h:outputLabel value="Urgência *" />
+                <h:selectOneRadio id="urgenciaSelectOneMenu" required="true" value="#{clinicaMedicaBean.consulta.urgencia}"
+                                 requiredMessage="Urgência não selecionada">
+                    <f:selectItem itemValue="urgente" itemLabel="Urgente" />
+                    <f:selectItem itemValue="semiUrgente" itemLabel="Semi-Urgente" />
+                    <f:selectItem itemValue="naoUrgente" itemLabel="Não Urgente" />
+                </h:selectOneRadio>
+                <h:message for="urgenciaSelectOneMenu" styleClass="mensagem_erro" />
+
+            </h:panelGrid>
+            <h:panelGrid rendered="#{clinicaMedicaBean.cadastrar}">
+                <h:commandButton value="Inserir" action="#{clinicaMedicaBean.cadastrarConsulta()}" />
+            </h:panelGrid>
+            <p>
+                <h:button value="Visualizar Consultas" outcome="/index.xhtml"/>    
+            </p>
+        </h:form>
+    </h:body>
+</html>

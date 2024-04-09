@@ -1,0 +1,8 @@
+.mensagem_erro { color:red; }
+.mensagem {color:blue; }
+.header { background-color: steelblue; color: white; text-align: match-parent;} 
+.oddRows {  padding-left: 10px; background-color: lightcyan; text-align: center;  }
+.evenRows {  background-color: lightskyblue; text-align: center  }
+.table{ width: 750px; }
+
+
