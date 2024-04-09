@@ -1,0 +1,8 @@
+DROP TABLE consultas;
+CREATE TABLE consultas (
+NomePaciente varchar(50) NOT NULL,
+NomeMedico varchar(45) NOT NULL,
+Ano varchar(4) NOT NULL,
+TipoConsulta varchar(45) NOT NULL,
+Urgencia varchar(45) NOT NULL
+)
