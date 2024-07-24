@@ -26,6 +26,11 @@ O sistema de Clínica Médica permite:
 - **CRUD de Agendamentos:** Adicionar, listar, editar e remover agendamentos de consultas.
 - **Interface Responsiva:** Utiliza PrimeFaces para uma experiência de usuário interativa e responsiva.
 
+## Funcionalidades
+Aqui está uma captura de tela: 
+![g](https://uploaddeimagens.com.br/images/004/814/017/original/Captura_de_tela_2024-07-23_222814.png?1721788155)
+
+
 ### Execução
 
 1. **Executar o Servidor:**
@@ -34,3 +39,6 @@ O sistema de Clínica Médica permite:
 
 2. **Acessar a Aplicação:**
    - Abra um navegador e acesse `http://localhost:8080/seu-contexto`.
+  
+
+
